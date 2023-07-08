@@ -55,16 +55,18 @@ function App() {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          'https://mern-hardware-express.onrender.com/api/products/categories'
+          `${process.env.REACT_APP_BACKEND}api/products/categories`
         );
         setCategories(data);
-        console.log(categories);
+        console.log(data);
+        console.log(process.env.REACT_APP_BACKEND);
       } catch (err) {
         toast.error(getError(err));
       }
     };
     fetchCategories();
   }, []);
+
   return (
     <BrowserRouter>
       <div
