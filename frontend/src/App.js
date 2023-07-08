@@ -54,7 +54,7 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(
+        const data = await axios.get(
           `${process.env.REACT_APP_BACKEND}api/products/categories`
         );
         setCategories(data);
