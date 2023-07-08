@@ -47,10 +47,37 @@ function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Amazona</title>
+        <title>Prestige Links</title>
       </Helmet>
-      <h1>Featured Products</h1>
+      {/* landing page */}
+      {/*  */}
       <div className="products">
+        <div
+          style={{
+            height: '100vh',
+            width: '100vw',
+            background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688858297/prestigeLinks/steelItems_no5ehe.jpg') no-repeat center center `,
+            backgroundSize: 'cover',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              padding: '20px',
+              borderRadius: '5px',
+            }}
+          >
+            <h1>Welcome to the Landing Screen!</h1>
+            <p>Additional text or content can be added here.</p>
+          </div>
+        </div>
+
+        {/*  */}
+
+        <h1>Featured Products</h1>
         {loading ? (
           <LoadingBox />
         ) : error ? (

@@ -8,6 +8,7 @@ import Badge from 'react-bootstrap/Badge';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
+import CompanyData from './companyInfo';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from './Store';
@@ -91,11 +92,14 @@ function App() {
               </Button>
 
               <LinkContainer to="/">
-                <Navbar.Brand>amazona</Navbar.Brand>
+                <Navbar.Brand>{CompanyData.companyName}</Navbar.Brand>
               </LinkContainer>
+              {/*  */}
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
+                {/*  */}
                 <SearchBox />
+                {/*  */}
                 <Nav className="me-auto  w-100  justify-content-end">
                   <Link to="/cart" className="nav-link">
                     Cart
