@@ -57,9 +57,8 @@ function App() {
         const data = await axios.get(
           `${process.env.REACT_APP_BACKEND}api/products/categories`
         );
-        setCategories(data);
-        console.log(data);
-        console.log(process.env.REACT_APP_BACKEND);
+        setCategories(data.data);
+        console.log(data.data);
       } catch (err) {
         toast.error(getError(err));
       }
