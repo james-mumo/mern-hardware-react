@@ -156,6 +156,7 @@ function App() {
               <strong>Categories</strong>
             </Nav.Item>
             {categories &&
+              Array.isArray(categories) &&
               categories.map((category) => (
                 <Nav.Item key={category}>
                   <LinkContainer
