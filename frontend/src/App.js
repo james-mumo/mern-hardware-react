@@ -308,7 +308,7 @@ function App() {
           <div className="flex flex-row items-center justify-center gap-10">
             {CompanyData.location && (
               <p>
-                <strong>Location:</strong> : Your Address, City, Building, Floor
+                <strong>Location:</strong> : Address, City, Building, Floor
               </p>
             )}
             <p>

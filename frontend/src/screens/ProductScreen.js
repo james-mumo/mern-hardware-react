@@ -126,15 +126,18 @@ function ProductScreen() {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div>
+    <div className="md:p-2 p-5 border">
       <Row>
         <Col md={6}>
           <img
-            className="img-large"
+            className="img-large border h-[80vh]"
             src={selectedImage || product.image}
             alt={product.name}
           ></img>
         </Col>
+
+        {/*  */}
+
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>

@@ -132,13 +132,17 @@ export default function SearchScreen() {
     }category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
   };
   return (
-    <div>
+    <div className="p-4 md:p-2">
       <Helmet>
         <title>Search Products</title>
       </Helmet>
       <Row>
         <Col md={3}>
-          <h3>Department</h3>
+          <h3>
+            <strong> Sort By Category</strong>
+          </h3>
+          <br />
+          <hr />
           <div>
             <ul>
               <li>
@@ -162,7 +166,13 @@ export default function SearchScreen() {
             </ul>
           </div>
           <div>
-            <h3>Price</h3>
+            <hr />
+            <br />
+            <h3>
+              <strong> Sort By Price</strong>
+            </h3>
+            <br />
+            <hr />
             <ul>
               <li>
                 <Link
@@ -185,7 +195,12 @@ export default function SearchScreen() {
             </ul>
           </div>
           <div>
-            <h3>Avg. Customer Review</h3>
+            <hr />
+            <br />
+            <h3>
+              <strong> Sort By Reviews</strong>
+            </h3>
+
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -270,7 +285,7 @@ export default function SearchScreen() {
                     className="mx-1"
                     to={{
                       pathname: '/search',
-                      seacrh: getFilterUrl({ page: x + 1 }, true),
+                      search: getFilterUrl({ page: x + 1 }, true),
                     }}
                   >
                     <Button
