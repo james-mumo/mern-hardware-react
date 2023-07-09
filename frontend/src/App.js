@@ -83,14 +83,14 @@ function App() {
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header className="">
-          <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar variant="dark" expand="lg" className="bg-teal-900">
             <Container>
-              <Button
+              {/* <Button
                 variant="dark"
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
                 <i className="fas fa-bars"></i>
-              </Button>
+              </Button> */}
 
               <LinkContainer to="/">
                 <Navbar.Brand>{CompanyData.companyName}</Navbar.Brand>
@@ -98,12 +98,15 @@ function App() {
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <SearchBox />
-
                 <Nav className="me-auto  w-100  justify-content-end">
+                  <SearchBox />
                   <Link to="/" className="nav-link">
                     Home&nbsp;
                     <i className="fa fa-home" aria-hidden="true"></i>
+                  </Link>
+                  <Link to="/search" className="nav-link">
+                    Shop&nbsp;
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                   </Link>
 
                   <Link to="/aboutus" className="nav-link">

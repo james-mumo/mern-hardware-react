@@ -1,4 +1,6 @@
 import { useEffect, useReducer, useState } from 'react';
+import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -26,6 +28,17 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+};
+
+const CategoryItem = ({ image, title, url }) => {
+  return (
+    <a href={url}>
+      <div className="flex flex-col gap-2 items-center rounded-md overflow-hidden justify-evenly">
+        <img src={image} alt={title} className="h-20 w-20" />
+        <h2>{title}</h2>
+      </div>
+    </a>
+  );
 };
 
 function HomeScreen() {
@@ -76,59 +89,118 @@ function HomeScreen() {
       </Helmet>
       {/* landing page */}
       {/*  */}
-      <div className="products border">
-        <div
-          style={{
-            height: '90vh',
-            width: '100vw',
-            background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688858297/prestigeLinks/steelItems_no5ehe.jpg') no-repeat center center `,
-            backgroundSize: 'cover',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.8)',
-              padding: '20px',
-              borderRadius: '5px',
-            }}
-          >
-            <h1>Welcome to Prestige Links Limited</h1>
-            <p className="text-2xl">
-              Building Strong Foundations, One Material at a Time
-            </p>
-          </div>
-        </div>
+      <div className="products">
+        <Carousel className="w-[95vw] rounded-md overflow-hidden">
+          <Carousel.Item>
+            <div
+              style={{
+                height: '90vh',
+                width: '100vw',
+                background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688858297/prestigeLinks/steelItems_no5ehe.jpg') no-repeat center center `,
+                backgroundSize: 'cover',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                  padding: '20px',
+                  borderRadius: '5px',
+                }}
+              >
+                <h1>Welcome to Prestige Links Limited</h1>
+                <p className="text-2xl">
+                  Building Strong Foundations, One Material at a Time
+                </p>
+              </div>
+            </div>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <div
+              style={{
+                height: '90vh',
+                width: '100vw',
+                background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688870386/prestigeLinks/rolls2_lbhwpl.jpg') no-repeat center center `,
+                backgroundSize: 'cover',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                  padding: '20px',
+                  borderRadius: '5px',
+                }}
+              >
+                <h1>Welcome to Prestige Links Limited</h1>
+                <p className="text-2xl">
+                  Building Strong Foundations, One Material at a Time
+                </p>
+              </div>
+            </div>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <div
+              style={{
+                height: '90vh',
+                width: '100vw',
+                background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688870481/prestigeLinks/mach1_f2nt67.jpg') no-repeat center center `,
+                backgroundSize: 'cover',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                  padding: '20px',
+                  borderRadius: '5px',
+                }}
+              >
+                <h1>Welcome to Prestige Links Limited</h1>
+                <p className="text-2xl">
+                  Building Strong Foundations, One Material at a Time
+                </p>
+              </div>
+            </div>
+          </Carousel.Item>
+        </Carousel>
         {/*  */}
         {/* all categories */}
-        <div className="w-full border flex flex-col">
+        <div className="w-full flex flex-col">
           <h1 className="w-full ml-10 text-3xl py-2">Popular Categories</h1>
         </div>
 
-        {categories &&
-          Array.isArray(categories) &&
-          categories.map((category) => (
-            <span
-              key={category}
-              className="border border-teal-300 flex-col flex items-center p-4"
-            >
-              {/* <Nav.Item>
-                <LinkContainer
-                  to={{ pathname: '/search', search: `category=${category}` }}
-                >
-                  <Nav.Link>{category}</Nav.Link>
-                </LinkContainer>
-              </Nav.Item> */}
-              <img
-                src={`url/to/${category}-image.jpg`}
-                alt={category}
-                className="mt-2"
-              />
-              <p className="mt-2">{category}</p>
-            </span>
-          ))}
+        <div className="categories flex flex-row">
+          <CategoryItem
+            image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871676/prestigeLinks/nails_ptysy7.jpg"
+            title="Nails"
+            url="/search?category=Nails"
+          />
+          <CategoryItem
+            image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871676/prestigeLinks/cement_bcxovq.jpg"
+            title="Cement"
+            url="/search?category=Cement"
+          />
+          <CategoryItem
+            image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871675/prestigeLinks/wires_utrcgw.jpg"
+            title="Binding Wire"
+            url="/search?category=Binding Wire"
+          />
+          <CategoryItem
+            image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871675/prestigeLinks/stelbars_j0fu3x.webp"
+            title="Construction Steel"
+            url="/search?category=Steel"
+          />
+        </div>
+
         {/*  */}
         <div className="w-full border flex flex-col">
           <h1 className="w-full ml-10 text-3xl py-2">Featured Products</h1>
