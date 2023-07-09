@@ -52,9 +52,12 @@ export default function UserListScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/users`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND}/api/users`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({

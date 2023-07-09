@@ -51,9 +51,12 @@ export default function OrderListScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND}/api/orders`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({

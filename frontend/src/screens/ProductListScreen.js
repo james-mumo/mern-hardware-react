@@ -80,9 +80,12 @@ export default function ProductListScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`/api/products/admin?page=${page} `, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND}/api/products/admin?page=${page} `,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
 
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {}
