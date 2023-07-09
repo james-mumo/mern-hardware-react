@@ -14,6 +14,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Store } from './Store';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
+import AboutScreen from './screens/AboutScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SignupScreen from './screens/SignupScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
@@ -81,7 +82,7 @@ function App() {
         }
       >
         <ToastContainer position="bottom-center" limit={1} />
-        <header>
+        <header className="">
           <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
               <Button
@@ -94,15 +95,24 @@ function App() {
               <LinkContainer to="/">
                 <Navbar.Brand>{CompanyData.companyName}</Navbar.Brand>
               </LinkContainer>
-              {/*  */}
+
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                {/*  */}
                 <SearchBox />
-                {/*  */}
+
                 <Nav className="me-auto  w-100  justify-content-end">
+                  <Link to="/" className="nav-link">
+                    Home&nbsp;
+                    <i className="fa fa-home" aria-hidden="true"></i>
+                  </Link>
+
+                  <Link to="/aboutus" className="nav-link">
+                    About Us&nbsp;
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                  </Link>
                   <Link to="/cart" className="nav-link">
-                    Cart
+                    Cart&nbsp;
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
                         {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
@@ -123,12 +133,13 @@ function App() {
                         to="#signout"
                         onClick={signoutHandler}
                       >
-                        Sign Out
+                        Sign Out&nbsp;
                       </Link>
                     </NavDropdown>
                   ) : (
                     <Link className="nav-link" to="/signin">
-                      Sign In
+                      Sign In&nbsp;
+                      <i class="fa fa-user" aria-hidden="true"></i>
                     </Link>
                   )}
                   {userInfo && userInfo.isAdmin && (
@@ -178,7 +189,7 @@ function App() {
           </Nav>
         </div>
         <main>
-          <Container className="mt-3">
+          <Container className="mt-0">
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
@@ -281,13 +292,38 @@ function App() {
                   </AdminRoute>
                 }
               ></Route>
+              <Route path="/aboutus" element={<AboutScreen />}></Route>
 
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
         </main>
-        <footer>
-          <div className="text-center">All rights reserved</div>
+        <footer
+          style={{ backgroundColor: '#F0F5FF' }}
+          className="flex flex-col"
+        >
+          <div className="flex flex-row items-center justify-center gap-10">
+            {CompanyData.location && (
+              <p>
+                <strong>Location:</strong> : Your Address, City, Building, Floor
+              </p>
+            )}
+            <p>
+              <strong>Opening Hours </strong>: Monday - Friday: 9:00 AM - 6:00
+              PM
+            </p>
+            <p>
+              <strong>Social Media Links </strong>: <a href="#">Facebook</a>{' '}
+              {'  '}
+              {'  '}
+              <a href="#">Twitter</a> {'  '} {'  '}
+              {'  '}
+              <a href="#">Instagram</a>
+            </p>
+          </div>
+          <div className="text-center">
+            <p>All rights reserved {new Date().getFullYear()}</p>
+          </div>
         </footer>
       </div>
     </BrowserRouter>
