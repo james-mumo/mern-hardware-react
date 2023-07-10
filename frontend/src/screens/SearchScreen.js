@@ -266,10 +266,8 @@ export default function SearchScreen() {
                   </select>
                 </Col>
               </Row>
-              {products && products.length === 0 ? (
+              {products?.length === 0 && (
                 <MessageBox>No Product Found</MessageBox>
-              ) : (
-                <MessageBox>Something Went Wrong!</MessageBox>
               )}
 
               {products && (
