@@ -24,6 +24,7 @@ const reducer = (state, action) => {
 export default function OrderHistoryScreen() {
   const { state } = useContext(Store);
   const { userInfo } = state;
+
   const navigate = useNavigate();
 
   const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
@@ -37,7 +38,13 @@ export default function OrderHistoryScreen() {
         const { data } = await axios.get(
           `${process.env.REACT_APP_BACKEND}/api/orders/mine`,
 
-          { headers: { Authorization: `Bearer ${userInfo.token}` } }
+          {
+            headers: {
+              Authorization: `Bearer ${
+                userInfo?.token || userInfo?.data.token
+              }`,
+            },
+          }
         );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (error) {

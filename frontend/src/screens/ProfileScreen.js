@@ -44,7 +44,9 @@ export default function ProfileScreen() {
           password,
         },
         {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
+          headers: {
+            Authorization: `Bearer ${userInfo?.token || userInfo?.data?.token}`,
+          },
         }
       );
       dispatch({
