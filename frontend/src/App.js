@@ -38,7 +38,6 @@ import UserEditScreen from './screens/UserEditScreen';
 import MapScreen from './screens/MapScreen';
 import ForgetPasswordScreen from './screens/ForgetPasswordScreen';
 import ResetPasswordScreen from './screens/ResetPasswordScreen';
-import MainNavbar from './components/globals/MainNavbar';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -61,6 +60,7 @@ function App() {
           `${process.env.REACT_APP_BACKEND}/api/products/categories`
         );
         setCategories(data.data);
+        console.log(data.data);
       } catch (err) {
         toast.error(getError(err));
       }
@@ -70,12 +70,110 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="">
-        <MainNavbar />
+      <div
+        className={
+          sidebarIsOpen
+            ? fullBox
+              ? 'site-container active-cont d-flex flex-column full-box'
+              : 'site-container active-cont d-flex flex-column'
+            : fullBox
+            ? 'site-container d-flex flex-column full-box'
+            : 'site-container d-flex flex-column'
+        }
+      >
         <ToastContainer position="bottom-center" limit={1} />
+        <header className="">
+          <Navbar variant="dark" expand="lg" className="bg-teal-900">
+            <Container>
+              {/* <Button
+                variant="dark"
+                onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
+              >
+                <i className="fas fa-bars"></i>
+              </Button> */}
 
-        <div className="  ">
-          {/* <Nav className="flex-column text-white w-100 p-2">
+              <LinkContainer to="/">
+                <Navbar.Brand>{CompanyData.companyName}</Navbar.Brand>
+              </LinkContainer>
+
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto  w-100  justify-content-end">
+                  <SearchBox />
+                  <Link to="/" className="nav-link">
+                    Home&nbsp;
+                    <i className="fa fa-home" aria-hidden="true"></i>
+                  </Link>
+                  <Link to="/search" className="nav-link">
+                    Shop&nbsp;
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                  </Link>
+
+                  <Link to="/aboutus" className="nav-link">
+                    About Us&nbsp;
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                  </Link>
+                  <Link to="/cart" className="nav-link">
+                    Cart&nbsp;
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    {cart.cartItems.length > 0 && (
+                      <Badge pill bg="danger">
+                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      </Badge>
+                    )}
+                  </Link>
+                  {userInfo ? (
+                    <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                      <LinkContainer to="/profile">
+                        <NavDropdown.Item>User Profile</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/orderhistory">
+                        <NavDropdown.Item>Order History</NavDropdown.Item>
+                      </LinkContainer>
+                      <NavDropdown.Divider />
+                      <Link
+                        className="dropdown-item"
+                        to="#signout"
+                        onClick={signoutHandler}
+                      >
+                        Sign Out&nbsp;
+                      </Link>
+                    </NavDropdown>
+                  ) : (
+                    <Link className="nav-link" to="/signin">
+                      Sign In&nbsp;
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                    </Link>
+                  )}
+                  {userInfo && userInfo.isAdmin && (
+                    <NavDropdown title="Admin" id="admin-nav-dropdown">
+                      <LinkContainer to="/admin/dashboard">
+                        <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/products">
+                        <NavDropdown.Item>Products</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/orders">
+                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/users">
+                        <NavDropdown.Item>Users</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
+        </header>
+        <div
+          className={
+            sidebarIsOpen
+              ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
+              : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
+          }
+        >
+          <Nav className="flex-column text-white w-100 p-2">
             <Nav.Item>
               <strong>Categories</strong>
             </Nav.Item>
@@ -91,7 +189,7 @@ function App() {
                   </LinkContainer>
                 </Nav.Item>
               ))}
-          </Nav> */}
+          </Nav>
         </div>
         <main>
           <Container className="mt-0">

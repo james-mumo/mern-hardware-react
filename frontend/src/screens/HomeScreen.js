@@ -90,12 +90,12 @@ function HomeScreen() {
       {/* landing page */}
       {/*  */}
       <div className="products">
-        <Carousel className="w-[99vw] rounded-md overflow-hidden mt-1">
+        <Carousel className="w-[95vw] rounded-md overflow-hidden">
           <Carousel.Item>
             <div
               style={{
-                height: '80vh',
-                width: '99vw',
+                height: '90vh',
+                width: '100vw',
                 background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688858297/prestigeLinks/steelItems_no5ehe.jpg') no-repeat center center `,
                 backgroundSize: 'cover',
                 display: 'flex',
@@ -105,15 +105,13 @@ function HomeScreen() {
             >
               <div
                 style={{
-                  backgroundColor: 'rgba(8, 3, 75, 0.747)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
                   padding: '20px',
                   borderRadius: '5px',
                 }}
               >
-                <h1 className="text-white font-semibold">
-                  Welcome to Prestige Links Limited
-                </h1>
-                <p className="text-2xl text-white font-semibold">
+                <h1>Welcome to Prestige Links Limited</h1>
+                <p className="text-2xl">
                   Building Strong Foundations, One Material at a Time
                 </p>
               </div>
@@ -123,7 +121,7 @@ function HomeScreen() {
           <Carousel.Item>
             <div
               style={{
-                height: '80vh',
+                height: '90vh',
                 width: '100vw',
                 background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688870386/prestigeLinks/rolls2_lbhwpl.jpg') no-repeat center center `,
                 backgroundSize: 'cover',
@@ -134,15 +132,13 @@ function HomeScreen() {
             >
               <div
                 style={{
-                  backgroundColor: 'rgba(8, 3, 75, 0.747)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
                   padding: '20px',
                   borderRadius: '5px',
                 }}
               >
-                <h1 className="text-white font-semibold">
-                  Welcome to Prestige Links Limited
-                </h1>
-                <p className="text-2xl text-white font-semibold">
+                <h1>Welcome to Prestige Links Limited</h1>
+                <p className="text-2xl">
                   Building Strong Foundations, One Material at a Time
                 </p>
               </div>
@@ -152,7 +148,7 @@ function HomeScreen() {
           <Carousel.Item>
             <div
               style={{
-                height: '80vh',
+                height: '90vh',
                 width: '100vw',
                 background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688870481/prestigeLinks/mach1_f2nt67.jpg') no-repeat center center `,
                 backgroundSize: 'cover',
@@ -163,15 +159,13 @@ function HomeScreen() {
             >
               <div
                 style={{
-                  backgroundColor: 'rgba(8, 3, 75, 0.747)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
                   padding: '20px',
                   borderRadius: '5px',
                 }}
               >
-                <h1 className="text-white font-semibold">
-                  Welcome to Prestige Links Limited
-                </h1>
-                <p className="text-2xl text-white font-semibold">
+                <h1>Welcome to Prestige Links Limited</h1>
+                <p className="text-2xl">
                   Building Strong Foundations, One Material at a Time
                 </p>
               </div>
@@ -181,13 +175,7 @@ function HomeScreen() {
         {/*  */}
         {/* all categories */}
         <div className="w-full flex flex-col">
-          <span className="flex items-center">
-            <hr className="border-t border-teal-400 mx-3 w-10" />
-            <span className="text-[#7fffd4] text-[33px] font-semibold">
-              Popular Categories
-            </span>
-            <hr className="border-t border-teal-400 mx-3 flex-grow" />
-          </span>
+          <h1 className="w-full ml-10 text-3xl py-2">Popular Categories</h1>
         </div>
 
         <div className="categories flex flex-row">
