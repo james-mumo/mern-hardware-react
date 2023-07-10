@@ -96,7 +96,7 @@ export default function ProductEditScreen() {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `/api/products/${productId}`,
+        `${process.env.REACT_APP_BACKEND}/api/products/${productId}`,
         {
           _id: productId,
           name,
@@ -129,7 +129,7 @@ export default function ProductEditScreen() {
     bodyFormData.append('file', file);
     try {
       dispatch({ type: 'UPLOAD_REQUEST' });
-      const { data } = await axios.post('/api/upload', bodyFormData, {
+      const { data } = await axios.post(`${process.env.REACT_APP_BACKEND}/api/upload`, bodyFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           authorization: `Bearer ${userInfo.token}`,

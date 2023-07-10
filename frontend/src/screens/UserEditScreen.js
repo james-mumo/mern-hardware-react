@@ -76,7 +76,7 @@ export default function UserEditScreen() {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `/api/users/${userId}`,
+        `${process.env.REACT_APP_BACKEND}/api/users/${userId}`,
         { _id: userId, name, email, isAdmin },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },

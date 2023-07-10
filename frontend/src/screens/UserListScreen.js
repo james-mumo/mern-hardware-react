@@ -77,9 +77,12 @@ export default function UserListScreen() {
     if (window.confirm('Are you sure to delete?')) {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
-        await axios.delete(`/api/users/${user._id}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        await axios.delete(
+          `${process.env.REACT_APP_BACKEND}/api/users/${user._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         toast.success('user deleted successfully');
         dispatch({ type: 'DELETE_SUCCESS' });
       } catch (error) {

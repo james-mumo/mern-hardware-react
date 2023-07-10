@@ -32,10 +32,13 @@ export default function ResetPasswordScreen() {
       return;
     }
     try {
-      await Axios.post('/api/users/reset-password', {
-        password,
-        token,
-      });
+      await Axios.post(
+        `${process.env.REACT_APP_BACKEND}/api/users/reset-password`,
+        {
+          password,
+          token,
+        }
+      );
       navigate('/signin');
       toast.success('Password updated successfully');
     } catch (err) {
