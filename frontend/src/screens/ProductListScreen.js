@@ -86,7 +86,7 @@ export default function ProductListScreen() {
             headers: { Authorization: `Bearer ${userInfo.token}` },
           }
         );
-
+        console.log(data.products);
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {}
     };
@@ -144,18 +144,16 @@ export default function ProductListScreen() {
 
   return (
     <div>
-      <Row>
-        <Col>
-          <h1>Products</h1>
-        </Col>
-        <Col className="col text-end">
-          <div>
-            <Button type="button" onClick={createHandler}>
-              Create Product
-            </Button>
-          </div>
-        </Col>
-      </Row>
+      <div className="w-full flex justify-between items-center my-1">
+        <div>
+          <h1 className="text-lg font-semibold">Products</h1>
+        </div>
+        <div>
+          <Button type="button" onClick={createHandler}>
+            Create Product
+          </Button>
+        </div>
+      </div>
 
       {loadingCreate && <LoadingBox></LoadingBox>}
       {loadingDelete && <LoadingBox></LoadingBox>}
@@ -170,6 +168,7 @@ export default function ProductListScreen() {
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Image</th>
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>CATEGORY</th>
@@ -181,13 +180,21 @@ export default function ProductListScreen() {
               {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
+                  <td>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="h-14 w-14 rounded-md"
+                    />
+                  </td>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>{product.price} $</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
                     <Button
                       type="button"
+                      className="bg-teal-700 text-white hover:bg-teal-500"
                       variant="light"
                       onClick={() => navigate(`/admin/product/${product._id}`)}
                     >
@@ -196,6 +203,7 @@ export default function ProductListScreen() {
                     &nbsp;
                     <Button
                       type="button"
+                      className="bg-red-700 text-white hover:bg-red-600"
                       variant="light"
                       onClick={() => deleteHandler(product)}
                     >

@@ -58,7 +58,7 @@ function HomeScreen() {
           `${process.env.REACT_APP_BACKEND}/api/products/categories`
         );
         setCategories(data.data);
-        console.log(data.data);
+        // console.log(data.data);
       } catch (err) {
         toast.error(getError(err));
       }
