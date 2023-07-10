@@ -126,11 +126,11 @@ function ProductScreen() {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div className="md:p-2 p-5 border">
+    <div className="md:p-2 p-3">
       <Row>
         <Col md={6}>
           <img
-            className="img-large border h-[80vh]"
+            className="img-large border h-[80vh] rounded-sm"
             src={selectedImage || product.image}
             alt={product.name}
           ></img>

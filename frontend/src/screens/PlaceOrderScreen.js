@@ -36,6 +36,8 @@ export default function PlaceOrderScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
+  console.log(cart.shippingAddress);
+
   const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100; // 123.2345 => 123.23
   cart.itemsPrice = round2(
     cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
@@ -94,22 +96,64 @@ export default function PlaceOrderScreen() {
             <Card.Body>
               <Card.Title>Shipping</Card.Title>
               <Card.Text>
-                <strong>Name:</strong> {cart.shippingAddress.fullName} <br />
-                <strong>Address: </strong> {cart.shippingAddress.address},
-                {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},
-                {cart.shippingAddress.country}
+                <div className="flex w-full gap-5">
+                  <span className="gap-3">
+                    <strong>First Name : {'  '}</strong>{' '}
+                    {cart.shippingAddress.firstName}{' '}
+                  </span>
+                  <span>
+                    <strong>Last Name : {'  '}</strong>
+                    {cart.shippingAddress.lastName}
+                  </span>
+                </div>
+                <strong>Address: </strong> {cart.shippingAddress.address}
+                {/* <br /> */}
+                {/* <strong>Email: </strong> {cart.shippingAddress.email} */}
+                <br />
+                <strong>Area: </strong>{' '}
+                {cart.shippingAddress.administrative_area}
+                <br />
+                <strong>Phone: </strong> {cart.shippingAddress.phone_number}
+                <br />
+                {cart?.shippingAddress?.number && (
+                  <div className="flex gap-3">
+                    <span>
+                      <strong>Expiration Year: </strong>{' '}
+                      {cart.shippingAddress.expiration_year}
+                    </span>
+                    <span>
+                      <strong>Expiration Month: </strong>{' '}
+                      {cart.shippingAddress.expiration_month}
+                    </span>
+                    <br />
+                    <strong>Card Security Code: </strong>{' '}
+                    {cart.shippingAddress.security_code}
+                  </div>
+                )}
+                <br />
               </Card.Text>
-              <Link to="/shipping">Edit</Link>
-            </Card.Body>
-          </Card>
-
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Title>Payment</Card.Title>
-              <Card.Text>
-                <strong>Method:</strong> {cart.paymentMethod}
-              </Card.Text>
-              <Link to="/payment">Edit</Link>
+              <Link
+                to="/shipping"
+                className="bg-teal-900 p-2 px-5 rounded-md mt-4 text-white"
+              >
+                Edit
+              </Link>
+              <br />
+              <Card className="mb-3 mt-2">
+                <Card.Body>
+                  <Card.Title>Payment</Card.Title>
+                  <Card.Text>
+                    <strong>Method:</strong>{' '}
+                    <span className="text-xl">{cart.paymentMethod}</span>
+                  </Card.Text>
+                  <Link
+                    to="/payment"
+                    className="bg-teal-900 p-1 px-5 rounded-md mt-4 text-white"
+                  >
+                    Edit
+                  </Link>
+                </Card.Body>
+              </Card>
             </Card.Body>
           </Card>
 

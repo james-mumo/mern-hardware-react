@@ -22,7 +22,7 @@ function SearchBox() {
 
   return (
     <form
-      className="w-fit  p-1 bg-[#2e2949 ] rounded-md border border-gray-900"
+      className="w-fit  p-1 bg-[#2e2949 ] rounded-md border border-blue-100"
       onSubmit={submitHandler}
     >
       <div className="input-group">

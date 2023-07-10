@@ -61,7 +61,6 @@ function App() {
           `${process.env.REACT_APP_BACKEND}/api/products/categories`
         );
         setCategories(data.data);
-        console.log(data.data);
       } catch (err) {
         toast.error(getError(err));
       }
@@ -219,10 +218,7 @@ function App() {
             </Routes>
           </Container>
         </main>
-        <footer
-          style={{ backgroundColor: '#F0F5FF' }}
-          className="flex flex-col"
-        >
+        <footer className="flex flex-col bg-blue-900 text-white">
           <div className="flex flex-row items-center justify-center gap-10">
             {CompanyData.location && (
               <p>
