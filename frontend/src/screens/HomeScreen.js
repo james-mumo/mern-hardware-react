@@ -33,8 +33,8 @@ const reducer = (state, action) => {
 const CategoryItem = ({ image, title, url }) => {
   return (
     <a href={url}>
-      <div className="flex flex-col gap-2 items-center rounded-md overflow-hidden justify-evenly">
-        <img src={image} alt={title} className="h-20 w-20" />
+      <div className="flex flex-col gap-2 items-center rounded-md overflow-hidden justify-evenly border p-1">
+        <img src={image} alt={title} className="h-14 w-full rounded-md" />
         <h2>{title}</h2>
       </div>
     </a>
@@ -94,7 +94,7 @@ function HomeScreen() {
           <Carousel.Item>
             <div
               style={{
-                height: '90vh',
+                height: '80vh',
                 width: '100vw',
                 background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688858297/prestigeLinks/steelItems_no5ehe.jpg') no-repeat center center `,
                 backgroundSize: 'cover',
@@ -110,8 +110,10 @@ function HomeScreen() {
                   borderRadius: '5px',
                 }}
               >
-                <h1>Welcome to Prestige Links Limited</h1>
-                <p className="text-2xl">
+                <h1 className="text-blue-900 font-semibold text-xl">
+                  Welcome to Prestige Links Limited
+                </h1>
+                <p className="text-2xl text-blue-600">
                   Building Strong Foundations, One Material at a Time
                 </p>
               </div>
@@ -121,7 +123,7 @@ function HomeScreen() {
           <Carousel.Item>
             <div
               style={{
-                height: '90vh',
+                height: '80vh',
                 width: '100vw',
                 background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688870386/prestigeLinks/rolls2_lbhwpl.jpg') no-repeat center center `,
                 backgroundSize: 'cover',
@@ -137,8 +139,10 @@ function HomeScreen() {
                   borderRadius: '5px',
                 }}
               >
-                <h1>Welcome to Prestige Links Limited</h1>
-                <p className="text-2xl">
+                <h1 className="text-blue-900 font-semibold text-xl">
+                  Welcome to Prestige Links Limited
+                </h1>
+                <p className="text-2xl text-blue-600">
                   Building Strong Foundations, One Material at a Time
                 </p>
               </div>
@@ -148,7 +152,7 @@ function HomeScreen() {
           <Carousel.Item>
             <div
               style={{
-                height: '90vh',
+                height: '80vh',
                 width: '100vw',
                 background: `url('https://res.cloudinary.com/djv535hkn/image/upload/v1688870481/prestigeLinks/mach1_f2nt67.jpg') no-repeat center center `,
                 backgroundSize: 'cover',
@@ -164,8 +168,10 @@ function HomeScreen() {
                   borderRadius: '5px',
                 }}
               >
-                <h1>Welcome to Prestige Links Limited</h1>
-                <p className="text-2xl">
+                <h1 className="text-blue-900 font-semibold text-xl">
+                  Welcome to Prestige Links Limited
+                </h1>
+                <p className="text-2xl text-blue-600">
                   Building Strong Foundations, One Material at a Time
                 </p>
               </div>
@@ -175,24 +181,35 @@ function HomeScreen() {
         {/*  */}
         {/* all categories */}
         <div className="w-full flex flex-col">
-          <h1 className="w-full ml-10 text-3xl py-2">Popular Categories</h1>
+          <span className="flex items-center">
+            <hr className="border-t border-teal-100 mx-3 w-10" />
+            <span className="text-[#7fffd4] text-[33px] font-semibold">
+              Popular Categories
+            </span>
+            <hr className="border-t border-teal-100 mx-3 flex-grow" />
+          </span>
         </div>
 
-        <div className="categories flex flex-row">
+        <div className="categories flex flex-row justify-evenly w-full">
           <CategoryItem
             image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871676/prestigeLinks/nails_ptysy7.jpg"
             title="Nails"
             url="/search?category=Nails"
           />
           <CategoryItem
-            image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871676/prestigeLinks/cement_bcxovq.jpg"
-            title="Cement"
-            url="/search?category=Cement"
+            image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871675/prestigeLinks/stelbars_j0fu3x.webp"
+            title="Construction Steel"
+            url="/search?category=Steel"
           />
           <CategoryItem
             image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871675/prestigeLinks/wires_utrcgw.jpg"
-            title="Binding Wire"
+            title="Binding Wires"
             url="/search?category=Binding Wire"
+          />
+          <CategoryItem
+            image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871675/prestigeLinks/stelbars_j0fu3x.webp"
+            title="Construction Steel"
+            url="/search?category=Steel"
           />
           <CategoryItem
             image="https://res.cloudinary.com/djv535hkn/image/upload/v1688871675/prestigeLinks/stelbars_j0fu3x.webp"
@@ -202,25 +219,38 @@ function HomeScreen() {
         </div>
 
         {/*  */}
-        <div className="w-full border flex flex-col">
-          <h1 className="w-full ml-10 text-3xl py-2">Featured Products</h1>
-        </div>
+        <div className="featured w-full flex  flex-col">
+          <div className="w-full flex flex-col mt-5">
+            <span className="flex items-center py-2">
+              <hr className="border-t border-teal-100 mx-3 w-10" />
+              <span className="text-[#7fffd4] text-[20px] font-semibold">
+                Featured Products
+              </span>
+              <hr className="border-t border-teal-100 mx-3 flex-grow" />
+            </span>
+          </div>
 
-        {loading ? (
-          <LoadingBox />
-        ) : error ? (
-          <MessageBox variant="danger">{error}</MessageBox>
-        ) : (
-          <Row>
-            {products &&
-              Array.isArray(products) &&
-              products?.map((product) => (
-                <Col key={product.slug} sm={6} md={5} lg={3} className="mb-3">
-                  <Product product={product}></Product>
-                </Col>
-              ))}
-          </Row>
-        )}
+          {loading ? (
+            <LoadingBox />
+          ) : error ? (
+            <MessageBox variant="danger">{error}</MessageBox>
+          ) : (
+            <div className="w-full items-center flex justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-fit">
+                {products &&
+                  Array.isArray(products) &&
+                  products.map((product) => (
+                    <div
+                      key={product.slug}
+                      className="mb-3 hover:transform hover:translate-y-1 hover:transition duration-700"
+                    >
+                      <Product product={product} />
+                    </div>
+                  ))}
+              </div>
+            </div>
+          )}
+        </div>
 
         {/*  */}
 

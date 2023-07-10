@@ -31,7 +31,7 @@ function Product(props) {
   };
 
   return (
-    <div className="card p-1 flex flex-col w-[250px]">
+    <div className="card p-1 flex flex-col w-[250px] hover:bg-slate-200 hover:transition duration-700">
       <Link to={`/product/${product.slug}`}>
         <img
           src={product.image}
