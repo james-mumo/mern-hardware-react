@@ -129,12 +129,16 @@ export default function ProductEditScreen() {
     bodyFormData.append('file', file);
     try {
       dispatch({ type: 'UPLOAD_REQUEST' });
-      const { data } = await axios.post(`${process.env.REACT_APP_BACKEND}/api/upload`, bodyFormData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          authorization: `Bearer ${userInfo.token}`,
-        },
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND}/api/upload`,
+        bodyFormData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
       dispatch({ type: 'UPLOAD_SUCCESS' });
 
       if (forImages) {
@@ -194,10 +198,15 @@ export default function ProductEditScreen() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="image">
             <Form.Label>Image File</Form.Label>
-            <Form.Control
+            {/* <Form.Control
               value={image}
               onChange={(e) => setImage(e.target.value)}
+            /> */}
+            <img
+              src={image}
               required
+              alt={image}
+              className="h-32 w-32 rounded-md border"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="imageFile">
@@ -212,7 +221,12 @@ export default function ProductEditScreen() {
             <ListGroup variant="flush">
               {images.map((x) => (
                 <ListGroup.Item key={x}>
-                  {x}
+                  {/* {x} */}
+                  <img
+                    src={x}
+                    alt={x}
+                    className="h-32 w-32 rounded-md border"
+                  />
                   <Button variant="light" onClick={() => deleteFileHandler(x)}>
                     <i className="fa fa-times-circle"></i>
                   </Button>

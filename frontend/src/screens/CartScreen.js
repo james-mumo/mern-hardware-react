@@ -48,7 +48,7 @@ export default function CartScreen() {
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
-              Cart is empty. <Link to="/">Go Shopping</Link>
+              Cart is empty. <Link to="/search">Go Shopping</Link>
             </MessageBox>
           ) : (
             <ListGroup>
@@ -73,7 +73,17 @@ export default function CartScreen() {
                       >
                         <i className="fas fa-minus-circle"></i>
                       </Button>{' '}
-                      <span>{item.quantity}</span>{' '}
+                      <span>
+                        <input
+                          type="number"
+                          value={item.quantity}
+                          min={0}
+                          max={item.countInStock}
+                          onChange={(e) =>
+                            updateCartHandler(item, parseInt(e.target.value))
+                          }
+                        />
+                      </span>{' '}
                       <Button
                         variant="light"
                         onClick={() =>

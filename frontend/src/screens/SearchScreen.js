@@ -98,7 +98,7 @@ export default function SearchScreen() {
       } catch (err) {
         dispatch({
           type: 'FETCH_FAIL',
-          payload: getError(error),
+          payload: getError(error || 'Somethinh Happened'),
         });
       }
     };
@@ -266,37 +266,43 @@ export default function SearchScreen() {
                   </select>
                 </Col>
               </Row>
-              {products.length === 0 && (
+              {products && products.length === 0 ? (
                 <MessageBox>No Product Found</MessageBox>
+              ) : (
+                <MessageBox>Something Went Wrong!</MessageBox>
               )}
 
-              <Row>
-                {products.map((product) => (
-                  <Col sm={6} lg={4} className="mb-3" key={product._id}>
-                    <Product product={product}></Product>
-                  </Col>
-                ))}
-              </Row>
+              {products && (
+                <>
+                  <Row>
+                    {products.map((product) => (
+                      <Col sm={6} lg={4} className="mb-3" key={product._id}>
+                        <Product product={product}></Product>
+                      </Col>
+                    ))}
+                  </Row>
 
-              <div>
-                {[...Array(pages).keys()].map((x) => (
-                  <LinkContainer
-                    key={x + 1}
-                    className="mx-1"
-                    to={{
-                      pathname: '/search',
-                      search: getFilterUrl({ page: x + 1 }, true),
-                    }}
-                  >
-                    <Button
-                      className={Number(page) === x + 1 ? 'text-bold' : ''}
-                      variant="light"
-                    >
-                      {x + 1}
-                    </Button>
-                  </LinkContainer>
-                ))}
-              </div>
+                  <div>
+                    {[...Array(pages).keys()].map((x) => (
+                      <LinkContainer
+                        key={x + 1}
+                        className="mx-1"
+                        to={{
+                          pathname: '/search',
+                          search: getFilterUrl({ page: x + 1 }, true),
+                        }}
+                      >
+                        <Button
+                          className={Number(page) === x + 1 ? 'text-bold' : ''}
+                          variant="light"
+                        >
+                          {x + 1}
+                        </Button>
+                      </LinkContainer>
+                    ))}
+                  </div>
+                </>
+              )}
             </>
           )}
         </Col>
