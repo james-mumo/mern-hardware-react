@@ -85,82 +85,81 @@ const MainNavbar = () => {
   }, []);
 
   return (
-    <div className="">
-      <div className="navbar top-0 flex flex-row justify-between px-10 py-1">
-        <div className="logo text-2xl flex flex-row gap-1 cursor-pointer h-8 justify-center align-middle font-mono font-bold hover:border-dashed">
-          <NavLink to="/" className="flex flex-row">
-            {/* <img src={logo} alt="logo" /> */}
-            <span className="text-[#fffdfd]">{CompanyData.companyName}</span>
-          </NavLink>
-        </div>
-        {posView ? (
-          <>
-            {/*  */}
-            <div className="navButtons flex flex-row justify-center items-center gap-3">
-              <Nav className="me-auto  w-100  justify-content-end items-center">
-                {/* <SearchBox /> */}
-                <SearchBox />
-                <Link to="/" className="nav-link">
-                  Home&nbsp;
-                  <i className="fa fa-home" aria-hidden="true"></i>
-                </Link>
-                <Link to="/search" className="nav-link">
-                  Shop&nbsp;
-                  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                </Link>
+    <div className="navbar top-0 flex flex-row justify-between px-10 py-1 border-bottom-1">
+      <div className="logo text-2xl flex flex-row gap-1 cursor-pointer h-8 justify-center align-middle font-mono font-bold hover:border-dashed">
+        <NavLink to="/" className="flex flex-row">
+          {/* <img src={logo} alt="logo" /> */}
+          <span className="text-[#fffdfd]">{CompanyData.companyName}</span>
+        </NavLink>
+      </div>
+      {posView ? (
+        <>
+          {/*  */}
+          <div className="navButtons flex flex-row justify-center items-center gap-3">
+            <Nav className="me-auto  w-100  justify-content-end items-center">
+              {/* <SearchBox /> */}
+              <SearchBox />
+              <Link to="/" className="nav-link">
+                Home&nbsp;
+                <i className="fa fa-home" aria-hidden="true"></i>
+              </Link>
+              <Link to="/search" className="nav-link">
+                Shop&nbsp;
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              </Link>
 
-                <Link to="/aboutus" className="nav-link">
-                  About Us&nbsp;
-                  <i class="fa fa-cogs" aria-hidden="true"></i>
-                </Link>
-                <Link to="/cart" className="nav-link">
-                  Cart&nbsp;
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                  {cart.cartItems.length > 0 && (
-                    <Badge pill bg="danger">
-                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                    </Badge>
-                  )}
-                </Link>
-                {isUserInfo ? (
-                  <>
-                    <Dropdown className='flex flex-col'>
-                      <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                        <h2>{userInfo.data.name}</h2>
-                      </Dropdown.Toggle>
-
-                      <Dropdown.Menu>
-                        <Dropdown.Item>
-                          <Link to="/profile" className="dropdown-item">
-                            User Profile
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link to="/orderhistory" className="dropdown-item">
-                            Order History
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item>
-                          <Link
-                            to="#signout"
-                            className="dropdown-item"
-                            onClick={signoutHandler}
-                          >
-                            Sign Out&nbsp;
-                          </Link>
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </>
-                ) : (
-                  <Link className="nav-link" to="/signin">
-                    Sign In&nbsp;
-                    <i className="fa fa-user" aria-hidden="true"></i>
-                  </Link>
+              <Link to="/aboutus" className="nav-link">
+                About Us&nbsp;
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+              </Link>
+              <Link to="/cart" className="nav-link">
+                Cart&nbsp;
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                {cart.cartItems.length > 0 && (
+                  <Badge pill bg="danger">
+                    {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  </Badge>
                 )}
-                {/* </Nav> */}
-                {/* {isUserInfo && userInfo ? (
+              </Link>
+              {isUserInfo ? (
+                <>
+                  <Dropdown className="flex flex-col">
+                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                      <h2>{userInfo.data.name}</h2>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item>
+                        <Link to="/profile" className="dropdown-item">
+                          User Profile
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link to="/orderhistory" className="dropdown-item">
+                          Order History
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item>
+                        <Link
+                          to="#signout"
+                          className="dropdown-item"
+                          onClick={signoutHandler}
+                        >
+                          Sign Out&nbsp;
+                        </Link>
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </>
+              ) : (
+                <Link className="nav-link" to="/signin">
+                  Sign In&nbsp;
+                  <i className="fa fa-user" aria-hidden="true"></i>
+                </Link>
+              )}
+              {/* </Nav> */}
+              {/* {isUserInfo && userInfo ? (
                   <div className="dropdown">
                     <button
                       className="btn dropdown-toggle text-white"
@@ -184,7 +183,7 @@ const MainNavbar = () => {
                     <i className="fa fa-user" aria-hidden="true"></i>
                   </Link>
                 )} */}
-                {/* {userInfo && userInfo.isAdmin && (
+              {/* {userInfo && userInfo.isAdmin && (
                   <div className="dropdown">
                     <button
                       className="btn dropdown-toggle"
@@ -215,24 +214,23 @@ const MainNavbar = () => {
                     </div>
                   </div>
                 )} */}
-              </Nav>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="navButtons headerNavigationButton lightPurple flex flex-row rounded-md">
-              <a
-                href="/"
-                className="flex flex-col justify-center px-2 rounded-md"
-              >
-                <div className="headerNavigationButton">
-                  <span className="navItemSpan">Website</span>
-                </div>
-              </a>
-            </div>
-          </>
-        )}
-      </div>
+            </Nav>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="navButtons headerNavigationButton lightPurple flex flex-row rounded-md">
+            <a
+              href="/"
+              className="flex flex-col justify-center px-2 rounded-md"
+            >
+              <div className="headerNavigationButton">
+                <span className="navItemSpan">Website</span>
+              </div>
+            </a>
+          </div>
+        </>
+      )}
     </div>
   );
 };

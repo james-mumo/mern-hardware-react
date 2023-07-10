@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(17, 27, 49);
+  color: wheat;
 }
 .site-container {
   min-height: 100vh;
@@ -21,7 +22,7 @@ main {
 /* navbar  */
 
 .navbar {
-  background: rgb(15, 23, 42);
+  background: rgb(10, 15, 27);
 }
 
 .btn-primary,
