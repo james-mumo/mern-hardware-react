@@ -76,11 +76,15 @@ export default function OrderListScreen() {
     if (window.confirm('Are you sure to delete?')) {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
-        await axios.delete(`${process.env.REACT_APP_BACKEND}/api/orders/${order._id}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        await axios.delete(
+          `${process.env.REACT_APP_BACKEND}/api/orders/${order._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         toast.success('order deleted successfully');
         dispatch({ type: 'DELETE_SUCCESS' });
+        navigate('/admin/products');
       } catch (err) {
         toast.error(getError(error));
         dispatch({
