@@ -84,7 +84,6 @@ export default function OrderListScreen() {
         );
         toast.success('order deleted successfully');
         dispatch({ type: 'DELETE_SUCCESS' });
-        navigate('/admin/products');
       } catch (err) {
         toast.error(getError(error));
         dispatch({
