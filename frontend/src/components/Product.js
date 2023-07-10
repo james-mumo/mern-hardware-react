@@ -31,29 +31,31 @@ function Product(props) {
   };
 
   return (
-    <Card>
+    <div className="card p-1 flex flex-col w-[250px]">
       <Link to={`/product/${product.slug}`}>
         <img
           src={product.image}
-          className="card-img-top h-[350px]"
+          className="card-img-top h-[265px] w-[250px]"
           alt={product.name}
         />
       </Link>
-      <Card.Body>
+      <div className="card-body">
         <Link to={`/product/${product.slug}`}>
-          <Card.Title>{product.name}</Card.Title>
+          <h2>{product.name}</h2>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text>${product.price}</Card.Text>
+        <p>${product.price}</p>
         {product.countInStock === 0 ? (
-          <Button variant="light" disabled>
+          <button className="btn btn-light" disabled>
             Out of stock
-          </Button>
+          </button>
         ) : (
-          <Button onClick={() => addToCartHandler(product)}>Add to cart</Button>
+          <button className="btn" onClick={() => addToCartHandler(product)}>
+            Add to cart
+          </button>
         )}
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 }
 export default Product;
