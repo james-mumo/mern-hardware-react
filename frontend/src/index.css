@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(17, 27, 49);
 }
 .site-container {
   min-height: 100vh;
@@ -16,6 +17,13 @@ body {
 main {
   flex: 1;
 }
+
+/* navbar  */
+
+.navbar {
+  background: rgb(15, 23, 42);
+}
+
 .btn-primary,
 .btn-outline-primary {
   background-color: #f0c040;

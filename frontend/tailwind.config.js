@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{html,js}'],
   theme: {
-    extend: {},
+    extend: {
+      navColor: {
+        custom: 'rgb(15, 23, 42)',
+      },
+    },
   },
   plugins: [],
 };
