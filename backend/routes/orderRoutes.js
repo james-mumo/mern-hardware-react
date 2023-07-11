@@ -30,6 +30,8 @@ orderRouter.post(
       taxPrice: req.body.taxPrice,
       totalPrice: req.body.totalPrice,
       user: req.user._id,
+      isPaid: req.body.isPaid,
+      paidAt: req.body.paidAt,
     });
 
     const order = await newOrder.save();
