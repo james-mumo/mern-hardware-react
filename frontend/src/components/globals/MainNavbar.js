@@ -87,7 +87,7 @@ const MainNavbar = () => {
   }, []);
 
   return (
-    <div className="navbar top-0 flex flex-row justify-between px-10 py-4 border-bottom-1 mb-1">
+    <div className="navbar top-0 flex flex-row justify-between px-10 py-2 border-bottom-1 mb-1">
       <div className="logo text-2xl flex flex-row gap-1 cursor-pointer h-7 justify-center align-middle font-mono font-bold hover:border-dashed">
         <NavLink to="/" className="flex flex-row">
           {/* <img src={logo} alt="logo" /> */}
